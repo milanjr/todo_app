@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TaskListView: View {
-    var body: some View {
+  @Environment(\.modelContext) private var context
+  
+  // @FetchRequest for importantUrgent, importantNotUrgent, notImportantUrgent and notImportantNotUrgent
+  // Important + Urgent
+  @Query var tasks: [TodoTask]
+
+  var body: some View {
         Text("Task List View")
     }
 }

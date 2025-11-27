@@ -21,6 +21,7 @@ final class EisenhowerMatrixViewModel: ObservableObject {
     }
 
     func addSampleTask() {
+      debugPrint("EisenhowerMatrixViewModel - addSampleTask")
         taskManager.createTask(title: "Sample")
     }
 }

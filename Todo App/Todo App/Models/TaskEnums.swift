@@ -7,21 +7,21 @@
 
 import Foundation
 
-enum Urgency {
-    case urgent
-    case notUrgent
+enum Urgency: Int, Codable {
+  case notUrgent = 0
+  case urgent = 1
 }
 
-enum Importance: String, Codable {
-    case important
-    case notImportant
+enum Importance: Int, Codable {
+  case notImportant
+  case important
 }
 
-enum Status: String, Codable {
-    case notPlanned
-    case planned
-    case inProgress
-    case onHold
-    case done
-    case canceled
+enum Status: Int, Codable {
+  case notPlanned
+  case planned
+  case inProgress
+  case onHold
+  case done
+  case canceled
 }
