@@ -144,9 +144,9 @@ struct MatrixCardView: View {
           ForEach(Array(tasks.prefix(5))) {task in
             MatrixCardRowView(task: task)
               .padding(.horizontal, 5)
-              .background(.white)
+              .background(.white.opacity(0.5))
               .cornerRadius(5)
-              .shadow(radius: 5)
+//              .shadow(radius: 5)
           }
           Spacer()
         }

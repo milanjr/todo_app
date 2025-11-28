@@ -79,6 +79,7 @@ struct TaskListRowView: View {
           .frame(width: 15, height: 15)
 
         Text("\(task.title)")
+          .strikethrough(task.status == .done || task.status == .canceled)
         Spacer()
         
         if task.importance == .important {

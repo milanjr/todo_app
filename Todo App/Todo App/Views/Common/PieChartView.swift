@@ -15,14 +15,14 @@ struct PieChartView: View {
             ZStack {
                 ForEach(data.indices, id: \.self) { index in
                     let total = data.reduce(0, { $0 + $1.value })
-                    let startAngle = (data[0..<index].reduce(0, { $0 + $1.value }) / total * 360)
-                    let endAngle = ((data[0...index].reduce(0, { $0 + $1.value }) / total * 360))
+                  let startAngle = (data[0..<index].reduce(0, { $0 + $1.value }) / total * 360)
+                  let endAngle = ((data[0...index].reduce(0, { $0 + $1.value }) / total * 360))
                     
                     PieSlice(
                         title: data[index].title,
                         value: data[index].value,
-                        startDeg: startAngle,
-                        endDeg: endAngle,
+                        startDeg: startAngle - 90,
+                        endDeg: endAngle - 90,
                         color: colors[index % colors.count]
                     )
                 }
@@ -55,15 +55,16 @@ struct PieSlice: View {
             
             // Add label inside the slice
           VStack(spacing: 4) {
-            Text(title)
+//            Text(title)
 //              .font(FA.font(14))
-              .foregroundColor(.white)
+//              .foregroundColor(.white)
             
-            Text(String(format: "%.2f%%", value))
+            Text(String(format: "%.f%%", value))
+              .fontWeight(.bold)
 //              .font(FA.font(18).weight(.bold))
-              .foregroundColor(.white)
+//              .foregroundColor(.white)
           }
-          .position(x: rect.midX / 2 * cos(Double.pi * (startDeg + endDeg) / (2 * 180) ) + rect.midX, y: rect.midY / 2 * sin(Double.pi * (startDeg + endDeg) / (2 * 180) ) + rect.midX)
+          .position(x: rect.midX / 1.5 * cos(Double.pi * (startDeg + endDeg) / (2 * 180) ) + rect.midX, y: rect.midY / 1.5 * sin(Double.pi * (startDeg + endDeg) / (2 * 180) ) + rect.midX)
         }
     }
 }
@@ -97,4 +98,5 @@ struct PieSliceShape: Shape {
                   ("Urgent", 50),
               ])
               .frame(width: 200, height: 200)
+              .shadow(radius: 10)
 }

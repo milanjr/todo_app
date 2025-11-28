@@ -15,7 +15,7 @@ struct MainView: View {
           EisenhowerMatrixView()
               .tabItem {
                   Image(systemName: "square.grid.2x2")
-                  Text("Matrix")
+//                  Text("Matrix")
               }
               .padding(.horizontal, 16)
               .padding(.bottom, 16)
@@ -23,30 +23,29 @@ struct MainView: View {
           TaskListView()
               .tabItem {
                   Image(systemName: "checklist")
-                  Text("Tasks")
+//                  Text("Tasks")
               }
-              .background(.pink)
-              .padding(.horizontal, 16)
+//              .padding(.horizontal, 16)
               .padding(.bottom, 16)
 
           DashboardView()
               .tabItem {
                   Image(systemName: "chart.bar")
-                  Text("Dashboard")
+//                  Text("Dashboard")
               }
-              .background(.purple)
-              .padding(.horizontal, 16)
+//              .padding(.horizontal, 16)
               .padding(.bottom, 16)
 
           SettingsView()
               .tabItem {
                   Image(systemName: "gear")
-                  Text("Settings")
+//                  Text("Settings")
               }
-              .background(.green)
-              .padding(.horizontal, 16)
+//              .background(.green)
+//              .padding(.horizontal, 16)
               .padding(.bottom, 16)
       }
+      .foregroundColor(.blue)
   }
 }
 

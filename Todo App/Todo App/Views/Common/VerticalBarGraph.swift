@@ -22,7 +22,12 @@ struct VerticalBarGraph: View {
           x: .value("Label", x.label),
           y: .value("Value", x.count)
         )
+        .annotation(content: {
+          Text("\(x.count)")
+        })
         .foregroundStyle(colors[index % colors.count])
+        .cornerRadius(10)
+        .shadow(radius: 5)
         
       }
     }
@@ -32,6 +37,7 @@ struct VerticalBarGraph: View {
           if let labelText = value.as(String.self) {
             Text(labelText)
               .font(.caption)
+              .fontWeight(.bold)
               .foregroundColor(axisTextColor)
           }
         }
@@ -42,14 +48,14 @@ struct VerticalBarGraph: View {
 }
 
 #Preview {
-  let ageDistributionData: [DistributionData] = [
+  let taskDistributionData: [DistributionData] = [
     .init(label: "V.Urgent", count: 1200),
     .init(label: "Urgent", count: 1800),
     .init(label: "Important", count: 2200),
     .init(label: "Hmmm", count: 1800),
   ]
   
-  let ageDistributionColors: [Color] = [
+  let taskDistributionColors: [Color] = [
     Color("UrgentImp"),
     Color("UrgentNotImp"),
     Color("NotUrgentImp"),
@@ -57,5 +63,5 @@ struct VerticalBarGraph: View {
     Color(red: 0, green: 0.88, blue: 0.88)
   ]
   
-  VerticalBarGraph(data: ageDistributionData, colors: ageDistributionColors)
+  VerticalBarGraph(data: taskDistributionData, colors: taskDistributionColors)
 }

@@ -9,6 +9,6 @@ import Foundation
 
 struct DistributionData: Identifiable {
     var label: String
-    var count: Double
+    var count: Int
     var id = UUID()
 }
