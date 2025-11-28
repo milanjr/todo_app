@@ -22,24 +22,38 @@ struct TaskListView: View {
 //        SearchHeaderView(viewModel: viewModel)
 //          .padding(10)
 //      }
-    NavigationView {
-        
+    VStack {
+      Text("All tasks")
+        .font(Font.largeTitle.bold())
+        .foregroundColor(.blue)
+      
+      if let viewModel = viewModel {
+        SearchHeaderView(viewModel: viewModel)
+          .padding(.horizontal, 16)
+      }
+
         List {
           ForEach(tasks) {task in
             TaskListRowView(task: task)
           }
         }
-        .navigationTitle("All tasks")
-        .toolbar {
-          ToolbarItem(placement: .primaryAction) {
-            Button(action: {
-              viewModel?.addSampleTask()
-            }) {
-              Image(systemName: "plus")
-            }
-          }
-        }
+//        .searchFocused(.constant(true))
+//        .toolbar {
+//          ToolbarItem(placement: .primaryAction) {
+//            Button(action: {
+//              viewModel?.addSampleTask()
+//            }) {
+////              Image(systemName: "plus")
+//              if let viewModel = viewModel {
+//                SearchHeaderView(viewModel: viewModel)
+//              } else {
+//                EmptyView()
+//              }
+//            }
+//          }
+//        }
       }
+//    .navigationTitle("All tasks")
 //    }
     .onAppear {
           if viewModel == nil {

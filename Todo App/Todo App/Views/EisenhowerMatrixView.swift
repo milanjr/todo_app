@@ -83,6 +83,10 @@ struct EisenhowerMatrixView: View {
               MatrixCardView(tasks: importantNotUrgent, title: "Important", color: Color("UrgentNotImp"))
               MatrixCardView(tasks: notImportantNotUrgent, title: "Hmmm", color: Color("NotUrgentNotImp"))
             }
+            
+            Text("MVVM structure pending...")
+              .font(.title)
+              .foregroundColor(.red)
           }
           
         }
@@ -98,10 +102,17 @@ struct EisenhowerMatrixView: View {
 
 struct SearchHeaderView: View {
   let viewModel: EisenhowerMatrixViewModel
+  @State var searchText: String = ""
   
   var body: some View {
     HStack {
-//      Text("Search")
+      CommonTextField(placeholder: "This is a placeholder", text: $searchText)
+        .borderColor(.red)
+        .placeholderColor(.green.opacity(0.3))
+        .backgroundColor(.yellow.opacity(0.2))
+        .rightView(Image(systemName: "xmark.circle"))
+        .leftView(Image(systemName: "mic"))
+      
       Spacer()
       Button(action: {
         debugPrint("Add button")
