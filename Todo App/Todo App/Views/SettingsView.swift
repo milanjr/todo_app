@@ -19,6 +19,8 @@ struct SettingsView: View {
   @State private var onHoldColor: Color = .orange
   @State private var doneColor: Color = .green
   @State private var canceledColor: Color = .gray.opacity(0.8)
+  
+  @State private var message = ""
 
   var body: some View {
     VStack(spacing: 20) {
@@ -41,6 +43,7 @@ struct SettingsView: View {
           doneColor = .green
           canceledColor = .gray.opacity(0.8)
           
+          message = ""
           
         } label: {
           Text("Reset Colors")
@@ -58,7 +61,7 @@ struct SettingsView: View {
         
         Button {
           debugPrint("Save colors in SwiftData")
-          
+          message = "It will not work yet. Please use the Xcode scheme to save the colors."
         } label: {
           Text("Save")
             .padding(10)
@@ -99,6 +102,9 @@ struct SettingsView: View {
           ColorPicker("On Hold", selection: $onHoldColor, supportsOpacity: false)
           ColorPicker("Done", selection: $doneColor, supportsOpacity: false)
           ColorPicker("Canceled", selection: $canceledColor, supportsOpacity: false)
+          
+          Text(message)
+            .foregroundColor(.red)
         }
       }
     }
