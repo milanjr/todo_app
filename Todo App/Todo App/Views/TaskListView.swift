@@ -96,14 +96,14 @@ struct TaskListRowView: View {
           .strikethrough(task.status == .done || task.status == .canceled)
         Spacer()
         
-        if task.importance == .important {
-          Image(systemName: "info.circle")
-            .tint(Color(.systemBlue))
-        }
 
         if task.urgency == .urgent {
-          Image(systemName: "arrow.up")
-            .tint(Color(.systemBlue))
+          Image(systemName: "exclamationmark")
+            .foregroundColor(.red)
+        }
+        if task.importance == .important {
+          Image(systemName: "info.circle")
+            .foregroundColor(.blue)
         }
 
         if let dueDate = task.dueDate/*, dueDate > Date()*/ {
